@@ -1,46 +1,53 @@
 apiVersion: v1
 entries:
   matrixbot:
-  - created: 2019-03-29T10:26:56.213522674Z
+  - created: 2019-03-29T11:16:16.517827818Z
+    description: Web3 Foundation bot for matrix.org
+    digest: 54475288b50b0c99fc929aa9f333e22b6c4b49691095882f46ca81e7b0e872b2
+    name: matrixbot
+    urls:
+    - matrixbot/matrixbot-v0.1.6.tgz
+    version: v0.1.6
+  - created: 2019-03-29T11:16:16.517645432Z
     description: Web3 Foundation bot for matrix.org
     digest: a5341b91f79623835574da66e305799c995089ed7296e0961be085775263c5b7
     name: matrixbot
     urls:
     - matrixbot/matrixbot-v0.1.5.tgz
     version: v0.1.5
-  - created: 2019-03-29T10:26:56.213269317Z
+  - created: 2019-03-29T11:16:16.517445015Z
     description: Web3 Foundation bot for matrix.org
     digest: 6ee66db139fa794a843962f16b809c134aa5d31aa6291ceef6f4164b03f97804
     name: matrixbot
     urls:
     - matrixbot/matrixbot-v0.1.4.tgz
     version: v0.1.4
-  - created: 2019-03-29T10:26:56.212980976Z
+  - created: 2019-03-29T11:16:16.517252383Z
     description: Web3 Foundation bot for matrix.org
     digest: 6973608cd61fa6a6279e26ca3cead5e618612c0fc76eb2994d7578ded8f008f3
     name: matrixbot
     urls:
     - matrixbot/matrixbot-v0.1.3.tgz
     version: v0.1.3
-  - created: 2019-03-29T10:26:56.212703368Z
+  - created: 2019-03-29T11:16:16.517078575Z
     description: Web3 Foundation bot for matrix.org
     digest: bc351fdba8c471c12ee07bc6d788b155c3205fbe434d00ccfb96efbfccf4fed1
     name: matrixbot
     urls:
     - matrixbot/matrixbot-v0.1.2.tgz
     version: v0.1.2
-  - created: 2019-03-29T10:26:56.212437815Z
+  - created: 2019-03-29T11:16:16.516906192Z
     description: Web3 Foundation bot for matrix.org
     digest: cd8ad85ed735bcc9735082d18c266930119fd8c5afdd4a00b68679bbfdf73370
     name: matrixbot
     urls:
     - matrixbot/matrixbot-v0.1.1.tgz
     version: v0.1.1
-  - created: 2019-03-29T10:26:56.212152689Z
+  - created: 2019-03-29T11:16:16.51672017Z
     description: Web3 Foundation bot for matrix.org
     digest: b25ebcca57a9d3d3db4c2e894febe81b3612d6f9113f08a39740f65e80cdb7ca
     name: matrixbot
     urls:
     - matrixbot/matrixbot-v0.1.0.tgz
     version: v0.1.0
-generated: 2019-03-29T10:26:56.211732705Z
+generated: 2019-03-29T11:16:16.516354585Z

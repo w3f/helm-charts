@@ -60,12 +60,6 @@ entries:
     urls:
     - bastion/bastion-v0.1.0.tgz
     version: v0.1.0
-  - apiVersion: v2
-    created: "2020-02-19T15:45:10.867331217Z"
-    description: A Bastion Helm chart for Kubernetes
-    digest: 5f472b5ea0c57e01675b86681841efb422bfbd5a242c2ee358218025cae554ba
-    name: bastion
-    urls:
   cla:
   - apiVersion: v2
     appVersion: 1.16.0

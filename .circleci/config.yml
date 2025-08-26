@@ -1,0 +1,26 @@
+version: 2.1
+
+jobs:
+  publish_charts:
+    docker:
+      - image: alpine/helm:3.17.3
+    steps:
+      - checkout
+      - run:
+          name: Install git & ca-certificates
+          command: |
+            apk update && \
+            apk add --no-cache git ca-certificates
+      - run:
+          name: Publish Helm chart
+          command: |
+            chmod +x publish-chart.sh
+            ./publish-chart.sh w3f/helm-charts
+
+workflows:
+  publish:
+    jobs:
+      - publish_charts:
+          context: github-bot
+          filters:
+            branches: {only: [ master ]}

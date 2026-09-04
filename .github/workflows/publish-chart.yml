@@ -70,13 +70,19 @@ jobs:
           fi
 
           helm lint "$CHART_DIR"
-          helm package "$CHART_DIR" --destination "$pages/$name"
+          # Index only the new package and merge the existing index into it: indexing the whole
+          # checkout would regenerate every entry and reset its `created` timestamp.
+          stage="$(mktemp -d)"
+          helm package "$CHART_DIR" --destination "$stage"
+          helm repo index "$stage" --merge "$pages/index.yaml" \
+            --url "https://${CHARTS_REPO%%/*}.github.io/${CHARTS_REPO#*/}/$name/"
+          mkdir -p "$pages/$name"
+          mv "$stage/$name-$version.tgz" "$pages/$name/"
+          mv "$stage/index.yaml" "$pages/index.yaml"
           cd "$pages"
-          helm repo index . --merge index.yaml \
-            --url "https://${CHARTS_REPO%%/*}.github.io/${CHARTS_REPO#*/}/"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Publish $name $version from ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          git commit -m "Published by GitHub Actions ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
           git push origin "$PAGES_BRANCH"
           echo "Published $name $version"

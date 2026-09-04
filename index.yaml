@@ -22344,6 +22344,16 @@ entries:
     version: v0.1.0
   virustotal-exporter:
   - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2026-09-04T13:31:17.682548172Z"
+    description: Prometheus exporter for the VirusTotal reputation of a set of domains
+    digest: e8e41dc04c46ba33892c053a270884b4104001800eed6c7c2ad209666e6c761e
+    name: virustotal-exporter
+    type: application
+    urls:
+    - https://w3f.github.io/helm-charts/virustotal-exporter/virustotal-exporter-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
     appVersion: 1.0.0
     created: "2026-09-04T13:17:15.570603449Z"
     description: Prometheus exporter for the VirusTotal reputation of a set of domains
@@ -22478,4 +22488,4 @@ entries:
     urls:
     - https://w3f.github.io/helm-charts/watchtower/watchtower-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-09-04T13:17:14.932198921Z"
+generated: "2026-09-04T13:31:17.6821615Z"

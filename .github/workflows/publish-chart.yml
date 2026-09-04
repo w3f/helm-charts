@@ -1,0 +1,82 @@
+# Reusable workflow: package a Helm chart from the calling repository and publish it to this
+# repository's gh-pages branch, which is served at https://w3f.github.io/helm-charts/.
+#
+# Call it from a service repository:
+#
+#   publish-chart:
+#     uses: w3f/helm-charts/.github/workflows/publish-chart.yml@master
+#     with:
+#       chart-path: deployment/chart
+#     secrets:
+#       HELM_CHARTS_TOKEN: ${{ secrets.HELM_CHARTS_TOKEN }}
+#
+# Publishing is idempotent: a chart version that already exists in the index is left untouched,
+# so bump `version` in Chart.yaml to publish a new release.
+name: Publish Helm chart
+
+on:
+  workflow_call:
+    inputs:
+      chart-path:
+        description: Path to the chart directory in the calling repository
+        required: true
+        type: string
+      charts-repo:
+        description: Repository that hosts the chart index
+        type: string
+        default: w3f/helm-charts
+      pages-branch:
+        description: Branch of charts-repo that GitHub Pages serves
+        type: string
+        default: gh-pages
+      helm-version:
+        type: string
+        default: v3.17.3
+    secrets:
+      HELM_CHARTS_TOKEN:
+        description: Token with write access to charts-repo
+        required: true
+
+permissions: {}
+
+jobs:
+  publish:
+    name: Publish ${{ inputs.chart-path }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: azure/setup-helm@9bc31f4ebc9c6b171d7bfbaa5d006ae7abdb4310 # v5
+        with:
+          version: ${{ inputs.helm-version }}
+      - name: Package and publish
+        env:
+          CHART_DIR: ${{ inputs.chart-path }}
+          CHARTS_REPO: ${{ inputs.charts-repo }}
+          PAGES_BRANCH: ${{ inputs.pages-branch }}
+          HELM_CHARTS_TOKEN: ${{ secrets.HELM_CHARTS_TOKEN }}
+        run: |
+          set -euo pipefail
+          pages="$(mktemp -d)"
+          git clone --branch "$PAGES_BRANCH" --depth 1 \
+            "https://x-access-token:${HELM_CHARTS_TOKEN}@github.com/${CHARTS_REPO}.git" "$pages"
+
+          name=$(awk '/^name:/ {print $2; exit}' "$CHART_DIR/Chart.yaml")
+          version=$(awk '/^version:/ {print $2; exit}' "$CHART_DIR/Chart.yaml")
+          if [[ -f "$pages/$name/$name-$version.tgz" ]]; then
+            echo "$name $version is already published; nothing to do"
+            exit 0
+          fi
+
+          helm lint "$CHART_DIR"
+          helm package "$CHART_DIR" --destination "$pages/$name"
+          cd "$pages"
+          helm repo index . --merge index.yaml \
+            --url "https://${CHARTS_REPO%%/*}.github.io/${CHARTS_REPO#*/}/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Publish $name $version from ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          git push origin "$PAGES_BRANCH"
+          echo "Published $name $version"

@@ -204,6 +204,14 @@ entries:
     version: v0.1.0
   base-services:
   - apiVersion: v2
+    created: "2026-09-14T14:34:08.361315884Z"
+    description: Web 3 platform base services.
+    digest: 47cc5f838957731066f8210a667e13f324be7c5ef188fb568e70c9d1bf50ac48
+    name: base-services
+    urls:
+    - https://w3f.github.io/helm-charts/base-services/base-services-1.9.8.tgz
+    version: 1.9.8
+  - apiVersion: v2
     created: "2026-09-04T13:17:14.953907243Z"
     description: Web 3 platform base services.
     digest: a2a8a26e4a8f35730f22f5d4838327220439d2f807d68525f0e9168bf3643e3d
@@ -22497,4 +22505,4 @@ entries:
     urls:
     - https://w3f.github.io/helm-charts/watchtower/watchtower-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-09-04T14:00:30.839357229Z"
+generated: "2026-09-14T14:34:08.360747719Z"

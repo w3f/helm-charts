@@ -11517,6 +11517,15 @@ entries:
     version: v1.0.0
   polguard:
   - apiVersion: v2
+    created: "2026-09-30T16:33:24.644231222Z"
+    description: An application stack that allows monitoring of Polkadot and Kusama.
+    digest: a1c71d41423a1e6d567744c78907e9c1293c98b8193a4972119a7cadc60bfd8e
+    name: polguard
+    type: application
+    urls:
+    - https://w3f.github.io/helm-charts/polguard/polguard-1.8.2.tgz
+    version: 1.8.2
+  - apiVersion: v2
     created: "2026-09-04T13:17:15.273719066Z"
     description: An application stack that allows monitoring of Polkadot and Kusama.
     digest: fc94b1aeb670a45109ab839a34fc69eca9d639667e4c1ea16c398cde0862c4e1
@@ -22505,4 +22514,4 @@ entries:
     urls:
     - https://w3f.github.io/helm-charts/watchtower/watchtower-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-09-14T14:34:08.360747719Z"
+generated: "2026-09-30T16:33:24.643413329Z"

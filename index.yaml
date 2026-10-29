@@ -20333,6 +20333,16 @@ entries:
   polstead:
   - apiVersion: v2
     appVersion: 0.1.1
+    created: "2026-10-29T14:21:07.638033938+01:00"
+    description: Runs an organisation's staking estate on Polkadot and Kusama
+    digest: e9e7b69d279729462336b7afae5389e0f392f4e0ff8f80e573a15765d7169b04
+    name: polstead
+    type: application
+    urls:
+    - https://w3f.github.io/helm-charts/polstead/polstead-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.1.1
     created: "2026-10-22T13:19:18.266407763Z"
     description: Runs an organisation's staking estate on Polkadot and Kusama
     digest: 04558a19d26139f82dae421d894144e393a2b5d97599542b8b566f2c79e429ef
@@ -22535,4 +22545,4 @@ entries:
     urls:
     - https://w3f.github.io/helm-charts/watchtower/watchtower-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-10-22T13:19:18.265835542Z"
+generated: "2026-10-29T14:21:07.637653184+01:00"
